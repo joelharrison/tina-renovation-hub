@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><g clipPath="url(#a)"><path fill="#000" d="M8.5.5v7h7v7h-15v-15h8Zm-.75 7.25H2.25v6.25h12.5v-6.25H7.75Zm0-1.5H14.5V2.25H2.25V6.75h5.25Z"/></g><defs><clipPath id="a"><path fill="#fff" d="M0 0h16v16H0z"/></clipPath></defs></svg>
+=======
+<svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M1.5 2.5h13v10a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1zM0 1h16v11.5a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 0 12.5zm3.75 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5M7 4.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0m1.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5" fill="#666"/></svg>
+>>>>>>> 3c5e9d8 (Initial commit from Create Next App)

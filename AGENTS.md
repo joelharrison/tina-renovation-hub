@@ -3,6 +3,7 @@
 
 This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` before writing any code. Heed deprecation notices.
 <!-- END:nextjs-agent-rules -->
+<<<<<<< HEAD
 
 # The Hub — Project Rules (Hands On Cayman Renovation)
 
@@ -55,3 +56,5 @@ This version has breaking changes — APIs, conventions, and file structure may 
 - When adding features, always consider the three personas and the July 27 demolition deadline pressure.
 - Default to clarity over cleverness.
 - Make the happy path (seeing progress, adding a photo, logging spend) extremely fast.
+=======
+>>>>>>> 3c5e9d8 (Initial commit from Create Next App)
