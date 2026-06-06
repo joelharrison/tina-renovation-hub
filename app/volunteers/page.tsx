@@ -26,6 +26,8 @@ I agree to follow all site rules and respect the property.
 
 Date: ________________  Signature: ______________________`;
 
+export const dynamic = "force-dynamic";
+
 export default function VolunteersPage() {
   const { data, addDonation } = useHubData(); // reuse add pattern, but we'll use local for volunteers for simplicity in this demo
   const { isCore } = useRole();
@@ -149,7 +151,7 @@ export default function VolunteersPage() {
                   <Checkbox 
                     id="waiver" 
                     checked={form.waiver_accepted} 
-                    onCheckedChange={(checked) => setForm({...form, waiver_accepted: !!checked})} 
+                    onChange={(e) => setForm({...form, waiver_accepted: e.target.checked})} 
                   />
                   <Label htmlFor="waiver" className="text-xs leading-tight cursor-pointer">
                     I have read, understand, and agree to the full liability waiver and release above.

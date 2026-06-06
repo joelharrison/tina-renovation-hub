@@ -16,6 +16,8 @@ import { importMaterialsFromExcel } from "@/lib/import-utils";
 
 const MATERIAL_STATUSES = ["needed", "sourcing", "ordered", "received", "installed", "donated-in-full"] as const;
 
+export const dynamic = "force-dynamic";
+
 export default function MaterialsPage() {
   const { data, addMaterial, updateData } = useHubData();
   const { isCore } = useRole();
@@ -110,32 +112,26 @@ export default function MaterialsPage() {
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <Label>Category</Label>
-                      <Select value={newMat.category} onValueChange={(v: any) => setNewMat({...newMat, category: v || "Flooring"})}>
-                        <SelectTrigger><SelectValue /></SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="Flooring">Flooring / tile</SelectItem>
-                          <SelectItem value="Roofing">Roofing</SelectItem>
-                          <SelectItem value="Paint">Paint</SelectItem>
-                          <SelectItem value="Drywall">Drywall</SelectItem>
-                          <SelectItem value="Plumbing">Plumbing</SelectItem>
-                          <SelectItem value="Electrical">Electrical</SelectItem>
-                          <SelectItem value="Cabinets">Cabinets</SelectItem>
-                          <SelectItem value="Other">Other</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <select value={newMat.category} onChange={(e) => setNewMat({...newMat, category: e.target.value || "Flooring"})} className="border border-[var(--border)] bg-[var(--surface)] rounded px-2 py-1 text-sm w-full">
+                        <option value="Flooring">Flooring / tile</option>
+                        <option value="Roofing">Roofing</option>
+                        <option value="Paint">Paint</option>
+                        <option value="Drywall">Drywall</option>
+                        <option value="Plumbing">Plumbing</option>
+                        <option value="Electrical">Electrical</option>
+                        <option value="Cabinets">Cabinets</option>
+                        <option value="Other">Other</option>
+                      </select>
                     </div>
                     <div>
                       <Label>Status</Label>
-                      <Select value={newMat.status} onValueChange={(v: any) => setNewMat({...newMat, status: v || "needed"})}>
-                        <SelectTrigger><SelectValue /></SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="needed">Needed</SelectItem>
-                          <SelectItem value="sourcing">Sourcing</SelectItem>
-                          <SelectItem value="ordered">Ordered</SelectItem>
-                          <SelectItem value="received">Received</SelectItem>
-                          <SelectItem value="installed">Installed</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <select value={newMat.status} onChange={(e) => setNewMat({...newMat, status: e.target.value || "needed"})} className="border border-[var(--border)] bg-[var(--surface)] rounded px-2 py-1 text-sm w-full">
+                        <option value="needed">Needed</option>
+                        <option value="sourcing">Sourcing</option>
+                        <option value="ordered">Ordered</option>
+                        <option value="received">Received</option>
+                        <option value="installed">Installed</option>
+                      </select>
                     </div>
                   </div>
                   <div className="grid grid-cols-3 gap-4">

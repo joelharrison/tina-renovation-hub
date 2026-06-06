@@ -9,6 +9,8 @@ import { Badge } from "@/components/ui/badge";
 const DEMO_DATE = "2025-07-27";
 const START_DATE = "2025-07-01"; // start of visible timeline
 
+export const dynamic = "force-dynamic";
+
 export default function TimelinePage() {
   const { data } = useHubData();
 

@@ -81,36 +81,36 @@ export function useHubData() {
             estimated_hours: 0,
             blocks: [],
             depends_on: a.dependencies || [],
-            notes: null,
+            notes: a.notes || undefined,
             created_at: a.created_at,
             updated_at: a.updated_at || a.created_at,
           })),
           donations: (donationsRes.data || []).map((d: any) => ({
             id: d.id,
             donor_name: d.donor,
-            donor_email: null,
-            donor_phone: null,
+            donor_email: undefined,
+            donor_phone: undefined,
             type: "cash",
             description: d.item || "",
             estimated_value: d.value || 0,
             material_id: d.linked_material_id,
             status: (d.status || "pledged"),
             received_date: d.date,
-            notes: null,
+            notes: d.notes || undefined,
             created_at: d.created_at,
           })),
           volunteers: (volunteersRes.data || []).map((v: any) => ({
             id: v.id,
             full_name: v.name,
             email: "volunteer@example.com",
-            phone: null,
+            phone: undefined,
             skills: v.skills || [],
             availability: v.availability,
             preferred_areas: [],
             waiver_signed: !!v.waiver_signed,
-            waiver_signed_at: null,
+            waiver_signed_at: undefined,
             hours_contributed: 0,
-            notes: null,
+            notes: undefined,
             created_at: v.created_at,
           })),
           budget_entries: (budgetRes.data || []).map((b: any) => ({
@@ -120,9 +120,9 @@ export function useHubData() {
             description: b.notes || "Imported transaction",
             date: b.date || new Date().toISOString().slice(0, 10),
             category: "Materials",
-            linked_donation_id: null,
-            linked_material_id: null,
-            receipt_url: null,
+            linked_donation_id: undefined,
+            linked_material_id: undefined,
+            receipt_url: undefined,
             created_by: "Supabase",
             created_at: b.created_at,
           })),
@@ -352,41 +352,6 @@ export function useHubData() {
     toast(message);
   }, [addNotification]);
 
-  const updateData = useCallback((updater: (current: HubData) => HubData) => {
-    setData(prev => {
-      const next = updater(prev);
-      return { ...next, last_updated: new Date().toISOString() };
-    });
-  }, []);
-
-  const loadSampleData = useCallback((force = false) => {
-    if (!force) {
-      const confirmed = window.confirm(
-        "Load fresh sample data? This will overwrite your current local changes."
-      );
-      if (!confirmed) return;
-    }
-    setData({ ...sampleHubData, last_updated: new Date().toISOString() });
-    toast.success("Sample data loaded (realistic Cayman renovation data)");
-  }, []);
-
-  const resetAllData = useCallback(() => {
-    const confirmed = window.confirm(
-      "Reset everything to blank? You will lose all local data and sample."
-    );
-    if (!confirmed) return;
-    const blank: HubData = {
-      action_items: [],
-      materials: [],
-      donations: [],
-      volunteers: [],
-      budget_entries: [],
-      documents: [],
-      last_updated: new Date().toISOString(),
-    };
-    setData(blank);
-    toast.info("All data cleared. Start fresh or load sample.");
-  }, []);
 
   // Supabase-aware add helpers (used by forms)
   const addActionItem = useCallback(async (item: any) => {

@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useRole } from "@/lib/role-context";
 
+export const dynamic = "force-dynamic";
+
 export default function ReportsPage() {
   const { exportJSON, exportCSV, exportPDFReport, data, kpis } = useHubData();
   const { isCore } = useRole();

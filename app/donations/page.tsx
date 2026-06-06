@@ -11,6 +11,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "sonner";
 
+export const dynamic = "force-dynamic";
+
 export default function DonationsPage() {
   const { data, addDonation } = useHubData();
   const { isCore } = useRole();
@@ -32,14 +34,11 @@ export default function DonationsPage() {
                 <div className="grid grid-cols-2 gap-3">
                   <div><Label>Value ($)</Label><Input type="number" value={newDon.estimated_value} onChange={e=>setNewDon({...newDon, estimated_value:parseFloat(e.target.value)||0})} /></div>
                   <div><Label>Type</Label>
-                    <Select value={newDon.type} onValueChange={(v) => setNewDon({...newDon, type: (v || "cash") as any})}>
-                      <SelectTrigger><SelectValue /></SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="cash">Cash</SelectItem>
-                        <SelectItem value="in-kind-material">In-kind Material</SelectItem>
-                        <SelectItem value="in-kind-labor">In-kind Labor</SelectItem>
-                      </SelectContent>
-                    </Select>
+                    <select value={newDon.type} onChange={(e) => setNewDon({...newDon, type: (e.target.value || "cash") as any})} className="border border-[var(--border)] bg-[var(--surface)] rounded px-2 py-1 text-sm w-full">
+                      <option value="cash">Cash</option>
+                      <option value="in-kind-material">In-kind Material</option>
+                      <option value="in-kind-labor">In-kind Labor</option>
+                    </select>
                   </div>
                 </div>
                 <div className="flex gap-3 pt-2">

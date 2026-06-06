@@ -12,7 +12,16 @@ interface RoleContextType {
   canEdit: boolean;
 }
 
-const RoleContext = createContext<RoleContextType | undefined>(undefined);
+const defaultRoleContext: RoleContextType = {
+  role: "core_team",
+  setRole: () => {},
+  isCore: true,
+  isVolunteer: false,
+  isDonor: false,
+  canEdit: true,
+};
+
+const RoleContext = createContext<RoleContextType>(defaultRoleContext);
 
 const STORAGE_KEY = "the-hub-role";
 
@@ -45,8 +54,5 @@ export function RoleProvider({ children }: { children: ReactNode }) {
 
 export function useRole() {
   const context = useContext(RoleContext);
-  if (context === undefined) {
-    throw new Error("useRole must be used within a RoleProvider");
-  }
   return context;
 }

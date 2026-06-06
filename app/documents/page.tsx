@@ -6,6 +6,8 @@ import { useRole } from "@/lib/role-context";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 
+export const dynamic = "force-dynamic";
+
 export default function DocumentsPage() {
   const { data } = useHubData();
   const { isCore } = useRole();

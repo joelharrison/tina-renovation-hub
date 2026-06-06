@@ -87,6 +87,8 @@ function SortableActionCard({ item, onEdit, onMove }: { item: any; onEdit: (item
   );
 }
 
+export const dynamic = "force-dynamic";
+
 export default function ActionItemsKanban() {
   const { data, addActionItem, updateData } = useHubData();
   const { isCore } = useRole();
@@ -286,23 +288,18 @@ export default function ActionItemsKanban() {
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <Label>Priority</Label>
-                <Select value={form.priority} onValueChange={(v) => setForm({ ...form, priority: v })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="P0">P0 - Safety / Critical</SelectItem>
-                    <SelectItem value="P1">P1 - Dependencies</SelectItem>
-                    <SelectItem value="P2">P2 - Important</SelectItem>
-                    <SelectItem value="P3">P3 - Low</SelectItem>
-                  </SelectContent>
-                </Select>
+                <select value={form.priority} onChange={(e) => setForm({ ...form, priority: e.target.value })} className="border border-[var(--border)] bg-[var(--surface)] rounded px-2 py-1 text-sm w-full">
+                  <option value="P0">P0 - Safety / Critical</option>
+                  <option value="P1">P1 - Dependencies</option>
+                  <option value="P2">P2 - Important</option>
+                  <option value="P3">P3 - Low</option>
+                </select>
               </div>
               <div>
                 <Label>Status</Label>
-                <Select value={form.status} onValueChange={(v) => setForm({ ...form, status: v })}>
-                  <SelectTrigger><SelectValue /></SelectTrigger>
-                  <SelectContent>
-                    {STATUSES.map(s => <SelectItem key={s} value={s}>{s.replace("_", " ")}</SelectItem>)}
-                </SelectContent>
+                <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })} className="border border-[var(--border)] bg-[var(--surface)] rounded px-2 py-1 text-sm w-full">
+                  {STATUSES.map(s => <option key={s} value={s}>{s.replace("_", " ")}</option>)}
+                </select>
               </div>
             </div>
 

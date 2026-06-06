@@ -3,6 +3,8 @@ import Link from "next/link";
 import { useHubData } from "@/lib/data-store";
 import { Card } from "@/components/ui/card";
 
+export const dynamic = "force-dynamic";
+
 export default function BudgetPage() {
   const { data, kpis } = useHubData();
   return (
